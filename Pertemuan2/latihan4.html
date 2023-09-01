@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Form</title>
+</head>
+<body>
+    <h2>FORMULIR</h2>
+    <br>
+    <form>
+        <label>Masukan Nama Anda:</label>
+        <input type="text" name="nama" value="" placeholder="isi nama anda disini" size="20" maxlength="30">
+        <br><br>
+        <label >Masukan Password:</label>
+        <input type="password" name="password" value="" placeholder="masukan password">
+        <br><br>
+        <label for="">Email Anda:</label>
+        <input type="email" name="email" id="" value="" placeholder="nama_anda@gmail.com">
+        <br><br>
+        <label for="">Masukan Warna Favorit:</label>
+        <input type="color" name="color" value="" id="">
+        <br><br>
+        <label for="">Masukan Tanggal Lahir:</label>
+        <input type="date" name="tgl_lahir" id="">
+        <br><br>
+        <label for="">Nilai Ujian:</label>
+        <input type="number" name="nilai" min="0" max="10" id="">
+        <br><br>
+        <label for="">Upload Gambar:</label>
+        <input type="file" name="foto" id="">
+        <br><br>
+        <label for="">Pilih Menu:</label> <br>
+        <input type="checkbox" name="menu" value="menu1" id="">Menu Pertama <br>
+        <input type="checkbox" name="menu" value="menu2" id="">Menu Kedua <br>
+        <input type="checkbox" name="menu" value="menu3" id="">Menu Ketiga <br>
+        <br><br>
+        <label for="">Jenis Kelamin</label> <br>
+        <input type="radio" name="jk" value="L" id="">Laki-Laki <br>
+        <input type="radio" name="jk" value="P" id="">Perempuan
+        <br><br>
+        <label for="">Pilihan</label>
+        <select name="pilih" id="">
+            <option value="">*Pilih Status*</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <br><br>
+        <label for="">Kolom Komentar</label>
+        <textarea name="" id="" cols="50" rows="30"></textarea>
+        <br><br>
+        <input type="submit" name="proses" value="simpan" id="">
+        <input type="reset" name="unproses" value="batal" id="">
+
+    </form>
+</body>
+</html>
