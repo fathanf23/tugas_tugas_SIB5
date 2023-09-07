@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 JavaScript Mochammad Fathan Fadillah</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; padding-right: 900px;">
+    <fieldset>
+        <div>
+            <script>
+                let pegawai = "Ridwan";
+                let jabatan = "Staf";
+                let status = "Menikah";
+                let gaji_pokok = 5000000;
+                let tunjangan_jabatan = 0.15 * gaji_pokok;
+                let bpjs = 0.10 * gaji_pokok;
+                let tunjangan_keluarga = (status === "Menikah") ? (0.20 * gaji_pokok) : 0;
+                let total_gaji = gaji_pokok + tunjangan_jabatan + bpjs + tunjangan_keluarga;
+                if (jabatan === "Manager") {
+                    gaji_pokok = 15000000;
+                } else if (jabatan === "Asisten Manager") {
+                    gaji_pokok = 10000000;
+                } else if (jabatan === "Staf") {
+                    gaji_pokok = 5000000;
+                }
+                // Cetak Data Pegawai
+                document.write("<h1>Cetak Data Pegawai : </h1>");
+                document.write("<hr>")
+                document.write("<br>Nama Pegawai : " + pegawai +
+                    "<br>Jabatan : " + jabatan +
+                    "<br>Status : " + status +
+                    "<br>Gaji Pokok : " + gaji_pokok +
+                    "<br> Tunjangan Jabatan : " + tunjangan_jabatan +
+                    "<br>BPJS : " + bpjs +
+                    "<br>Tunjangan Keluarga : " + tunjangan_keluarga +
+                    "<br>Total Gaji  : " + total_gaji);
+            </script>
+        </div>
+    </fieldset>
+</body>
+</html>
