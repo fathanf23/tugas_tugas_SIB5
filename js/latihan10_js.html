@@ -1,0 +1,29 @@
+<script>
+    // membuat array sederhana
+    var buah = ['pepaya', 'mangga', 'pisang', 'jambu']; //deklarasi array menggunakan kurung siku []
+    // mengganti index kedua
+    buah[2] = 'jeruk';
+    // buah[3] = 'pepaya';
+    for (var i = 0; i < buah.length; i++) {
+        document.write("<br>" + buah[i]);
+    }
+
+</script>
+<script>
+// array objek atau array di dalam array / array 2 dimensi
+let p1 = {'Nama' : 'Fathan' , 'Divisi' : 'Manager' , 'Gaji' : 150000000};
+let p2 = {'Nama' : 'Dhini' , 'Divisi' : 'CEO' , 'Gaji' : 15500000};
+let p3 = {'Nama' : 'Budi' , 'Divisi' : 'Staf' , 'Gaji' : 5000000};
+// menampilkan object
+let pegawai = [p1, p2, p3];
+for (let i = 0; i < pegawai.length; i++){
+    document.write("<br>" + pegawai[i]);
+}
+// menampilkan data
+    for(p of pegawai){
+        document.write("<br>" + p.Nama);
+        document.write("<br>" + p.Divisi);
+        document.write("<br>" + p.Gaji);
+
+    }
+</script>
