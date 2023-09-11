@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 Mochammad Fathan Fadillah</title>
+    <script src="tugas4.js"></script>
+</head>
+<body style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+    <form id="frm">
+        <table style="width: 50%; background-color: rgb(121, 211, 238); border: solid; text-align: center;">
+            <thead>
+                <th>FORM INPUTAN DATA PELANGGAN TUGAS 4</th>
+            </thead>
+            <tr>
+                <td><hr style="border-color: blue;"><label for="nama">Nama Pelanggan</label></td>
+                <td><input type="text" name="nama" id="nama" placeholder="Masukan nama pelanggan!"></td>
+            </tr>
+            <tr>
+                <td><label for="produk">Pilih Produk</label></td>
+                <td>
+                    <select name="produk" id="produk">
+                        <option value="TV">TV</option>
+                        <option value="AC">AC</option>
+                        <option value="KULKAS">Kulkas</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="jumlah">Jumlah Item</label></td>
+                <td><input type="number" id="jumlah" name="jumlah" placeholder="masukan jumlah item"></td>
+            </tr>
+            <tr>
+                <th><input style="border-radius: 10px; background-color: blue; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: white; width: 100px;" type="button" value="BELI" name="proses" onclick="transaksi()"></th>
+            </tr>
+        </table>
+
+    </form>
+    <hr>
+    <table style="border: solid; text-align: center; background-color: rgb(186, 240, 233); ">
+        <thead>
+            <th> *Struk Transaksi* </th>
+        </thead>
+        <tr>
+            <td><hr style="border-color: blue; border-collapse: collapse;"><p id="hasil"></p></td>
+        </tr>
+    </table>
+    <hr>
+    
+</body>
+</html>
