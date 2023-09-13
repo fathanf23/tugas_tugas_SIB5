@@ -1,0 +1,45 @@
+<html>
+<title>Tugas 5 JS Mochammad Fathan Fadillah</title>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <h1>=======================</h1>
+    <h1>TUGAS INFORMASI GEMPA</h1>
+    <h1>=======================</h1>
+    <div id="gempa-info"></div>
+    <script>
+    class Gempa {
+        constructor(lokasi, skala) {
+            this.lokasi = lokasi;
+            this.skala = skala;
+        }
+
+        dampak() {
+            if (this.skala >= 0 && this.skala <= 2) {
+                return "tidak terasa";
+            } else if (this.skala > 2 && this.skala <= 4) {
+                return "bangunan retak-retak";
+            } else if (this.skala > 4 && this.skala <= 6) {
+                return "bangunan roboh";
+            } else {
+                return "bangunan roboh dan berpotensi tsunami";
+            }
+        }
+    }
+
+    let g1 = new Gempa("Aceh", 3.5);
+    let g2 = new Gempa("Bandung", 2.0);
+    let g3 = new Gempa("Kaltim", 4.0);
+    let g4 = new Gempa("Sumatera", 1.5);
+    let g5 = new Gempa("Sulawesi", 9.0);
+
+    let daftarGempa = [g1, g2, g3, g4, g5];
+    daftarGempa.forEach(gempa => {
+    document.write(`
+        =========================<br>
+          Lokasi Gempa : ${gempa.lokasi}<br>
+          Skala Gempa : ${gempa.skala}<br>
+          Dampak Gempa : ${gempa.dampak()}<br>
+      `);
+    });
+</script>
+</body>
+</html>

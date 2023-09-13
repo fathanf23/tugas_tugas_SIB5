@@ -45,8 +45,9 @@
                 "Diskon: " + diskon + "\n" +
                 "Pajak: " + pajak + "\n" +
                 "Harga Bayar: " + hargaBayar;
-
             alert(message);
+
+            
             let data =  `Nama Pembeli : ${nama}
             <br> Produk Yang DiBeli : ${produk}
             <br> Harga Satuan : ${hargaSatuan}
