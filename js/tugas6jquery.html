@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tugas6jquery.css">
+    <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function () {
+            $("#div1").mouseup(function () {
+                var text1 = "Nama : Mochammad Fathan Fadillah <br> Alamat : Kuningan Jawa Barat <br> Asal Kampus : Universitas <br> Umur : 20th"
+                $(this).html(text1);
+            }).mouseleave(function () {
+                var reset1 = "Profile"
+                $(this).html(reset1);
+            });
+            $("#div2").mouseup(function () {
+                var text2 = "Hidup tidak boleh seperti kita saat mengendarai motor, kita tidak boleh terlalu sering melihat kebelakang dengan kaca spion tapi kita harus selalu fokus melihat kedepan untuk tetap dijalan yang benar dan bisa mencapai tujuan."
+                $(this).html(text2);
+            }).mouseleave(function () {
+                var reset2 = "Motto Hidup & Alasan"
+                $(this).html(reset2);
+            });
+            $("#div3").mouseup(function () {
+                var text3 = "Keahlian saya adalah sedikit mengerti tentang penggunaan HTML,CSS,Javascript,PHP dan pengalaman saya sudah membuat website untuk mendata profil penduduk dalam sebuah desa dengan menggunakan php dan untuk databasenya menggunakan MySQL"
+                $(this).html(text3);
+            }).mouseleave(function () {
+                var reset3 = "Keahlian & Pengalaman"
+                $(this).html(reset3);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>
+        <=======KLIK KOTAK UNTUK MENAMPILKAN DATA DARI MASING MASING BIDANG=======>
+    </h2>
+    <div id="div1">Profile</div>
+    <div id="div2">Motto Hidup & Alasan</div>
+    <div id="div3">Keahlian & Pengalaman</div>
+
+</body>
+
+</html>

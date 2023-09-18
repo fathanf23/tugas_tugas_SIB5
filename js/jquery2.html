@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    
+<button id="helloBtn">Say hello</button>
+<p>Contoh Slide Down Menggunakan jquery</p>
+    <script>
+        var helloBtn = document.getElementById( "helloBtn" );
+ 
+ helloBtn.addEventListener( "click", function( event ) {
+     alert( "Hello Selamat Belajar JQuery" );
+ }, false );
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("p").slideDown(600);
+        })
+    </script>
+</body>
+</html>

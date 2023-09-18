@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery3.css">
+    <script src="code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function () {
+            $("#div1").mouseover(function () {
+                $(this).css({
+                    background: "url('https://img.okezone.com/okz/500/library/images/2020/05/08/k98ml7q6genjjhv1lifa_14974.jpg')"
+                });
+            });
+            $("div").mouseout(function () {
+                $(this).css({
+                    background: "#0000ff"
+                });
+            });
+            $("#div2").mouseover(function () {
+                $(this).css({
+                    background: "url('bebek.webp')"
+                });
+            });
+            $("#div3").mouseover(function () {
+                $(this).css({
+                    background: "url('https://asset.kompas.com/crops/LpUgBlpMB6vjvw4_Fd0Yq3UQBZM=/0x0:1000x667/750x500/data/photo/2022/07/26/62dfce0acaeaa.jpg')"
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>Letakan Kursor ke masing masing kotak untuk melihat gambar</h2>
+    <div id="div1">Hewan Ayam</div>
+    <div id="div2">Hewan Bebek</div>
+    <div id="div3">Hewan Burung</div>
+
+</body>
+
+</html>
