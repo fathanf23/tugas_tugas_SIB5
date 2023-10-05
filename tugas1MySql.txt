@@ -7,10 +7,10 @@ Capture-lah perintah2 SQL dan beri komentar pada perintah queri berikut ini:
     SHOW DATABASES;
 
 - buat database baru : dbpegawai
-    CREATE DATABASE dbpegawaiSIB5
+    CREATE DATABASE dbpegawaiSIB5;
 
 - masuk ke ruang database dbpegawai
-    USE pegawaiSIB5
+    USE pegawaiSIB5;
 
 - tampilkan tabel2 yang sudah ada di dbpegawai
     show tables;
@@ -31,7 +31,7 @@ Capture-lah perintah2 SQL dan beri komentar pada perintah queri berikut ini:
     berat_badan FLOAT);
     
 -tampilkan database yang sudah dibuat
-    SHOW DATABASES
+    SHOW DATABASES;
 
 - lihat deskripsi tabel pegawai yang sudah dibuat
     DESC pegawai;
