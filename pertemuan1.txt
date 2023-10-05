@@ -1,0 +1,3 @@
+//Melihat Seluruh DataBase
+SHOW DATABASES;
+
