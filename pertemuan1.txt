@@ -1,3 +1,46 @@
+*Kumpulan Query MySql*
+
 //Melihat Seluruh DataBase
 SHOW DATABASES;
+
+//Membuat Database Baru
+CREATE DATABASE pegawaisib5;
+
+//menggunakan DataBase
+use pegawaisib5;
+
+//membuat Table
+CREATE TABLE jenis( id int PRIMARY KEY AUTO_INCREMENT, nama varchar (30) NOT NULL UNIQUE);
+id adalah nama kolom atau header kolom
+integer adalah tipedata
+PRIMARY KEY adalah key atau kunci dari sebuah Table
+AUTO_INCREMENT adalah key untuk automisasi penomoran
+NOT NULL menandakan kolom tersebut tidak boleh kosong jika data mulai di isi
+UNIQUE adalah key untuk kolom agar data tidak boleh sama
+
+//untuk Melihat detail Table
+DESC jenis;
+
+//NOT NULL (tidak boleh kosong)
+//NULL (boleh kosong)
+
+//membuat relasi produk
+CREATE TABLE produk(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30) NOT NULL UNIQUE,
+    harga double NOT NULL,
+    stok int NOT NULL,
+    idjenis int NOT NULL REFERENCES jenis(id),
+    foto varchar(30));
+REFERENCES (merujuk relasi ke Table tertentu)
+
+//DDL ALTER
+ALTER TABLE jenis ADD COLUMN IF NOT EXISTS
+keterangan varchar(50) AFTER nama;
+
+//Mengubah nama kolom keterangan menjadi ket dengan varchar (20)
+ALTER TABLE jenis CHANGE keterangan ket varchar(20);
+
+//untuk menghapus kolom
+ALTER TABLE jenis DROP COLUMN ket;
 
