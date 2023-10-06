@@ -1,0 +1,52 @@
+Buatlah table sebagai berikut 
+CREATE TABLE pembelian;
+1. table pembelian yang references ke produk dengan rincian kolom sebagai berikut:
+
+- tanggal
+
+- nomor 
+
+- produk_id
+
+- jumlah
+
+- harga 
+
+- vendor_id
+CREATE TABLE pembelian(
+    tanggal DATE,
+    nomor int NOT NULL,
+    produk_id int NOT NULL REFERENCES produk(id),
+    jumlah int NOT NULL,
+    harga int NOT NULL,
+    vendor_id int NOT NULL REFERENCES vendor(id));
+
+2. table vendor yang references ke table pembelian, dengan rincian kolom sebagai berikut:
+- nomor
+- nama
+- kota
+- kontak
+CREATE TABLE vendor (id int PRIMARY KEY AUTO_INCREMENT,
+nomor int,
+nama varchar(30),
+kota varchar(50),
+kontak int);
+
+
+
+isi 2 tabel berikut minimal 5 data
+INSERT INTO vendor(nomor, nama, kota, kontak)
+VALUES
+(123,'Fathan','Kuningan',01234567),
+(234,'Dhini','Bojong',02331231),
+(345,'Fidya','Kramatmulya',09039201),
+(456,'Anggraeni','Pramuka',09323243),
+(567,'rubbyjane','Korea',02302323);
+
+INSERT INTO pembelian (tanggal,nomor,produk_id,jumlah,harga,vendor_id)
+VALUES
+('2023-01-15',1,1,10,100000,1),
+('2023-02-14',2,2,12,200000,2),
+('2023-02-15',3,3,2,3000000,3),
+('2023-03-01',4,4,5,650000,4),
+('2023-04-01',5,6,3,1000000,5);
