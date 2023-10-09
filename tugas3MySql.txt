@@ -1,0 +1,54 @@
+//menambahkan table pelanggan
+INSERT INTO pelanggan (id,kode,nama,jk,tmp_lahir,tgl_lahir,email,kartu_id) VALUES 
+(NULL, 'C005', 'Andi', 'L', 'Bandung', '2001-09-02', 'andi@gmail.com', 2),
+(NULL, 'C006', 'Budi', 'L', 'Bandung', '2000-09-29', 'budi@gmail.com', 4),
+(NULL, 'C007', 'Fadillah', 'P', 'Surabaya', '2003-08-02', 'fadillah@gmail.com', 3),
+(NULL, 'C008', 'Miku', 'P', 'Aceh', '2004-09-02', 'miku@gmail.com', 2),
+(NULL, 'C009', 'Lily', 'L', 'Karawang', '2008-12-23', 'lily@gmail.com', 2),
+(NULL, 'C010', 'Shiro', 'L', 'Jakarta', '2002-09-12', 'shiro@gmail.com', 1);
+
+INSERT INTO `produk` (`id`, `kode`, `nama`, `harga_beli`, `harga_jual`, `stok`, `min_stok`, `jenis_produk_id`) VALUES 
+(NULL, 'L001', 'Lemari', '3000000', '3500000', '5', '2', '2'),
+(NULL, 'PC01', 'Motherboard', '2000000', '2500000', '7', '6', '5'),
+(NULL, 'PC02', 'RAM', '400000', '500000', '9', '7', '5'),
+(NULL, 'C001', 'Coca - Cola', '4500', '5000', '13', '9', '4'),
+(NULL, 'KSR1', 'Kasur', '1000000', '1200000', '4', '2', '2');
+
+CREATE TABLE pesanan_items 
+(id int PRIMARY KEY AUTO_INCREMENT, 
+ produk_id int NOT null REFERENCES produk(id), 
+ pesanan_id int NOT null REFERENCES pesanan(id),
+ qty int not null,
+ harga double);
+
+CREATE TABLE vendor(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    nomor varchar(4) NOT null,
+    nama varchar(40) NOT null,
+    kota varchar(30) NOT null,
+    kontak varchar(30) NOT null);
+
+CREATE TABLE pembelian(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    tanggal varchar(45) NOT null,
+    nomor varchar(10) NOT null,
+    produk_id int NOT null REFERENCES produk(id),
+    jumlah int not null,
+    harga double,
+    vendor_id int NOT null REFERENCES vendor(id));
+
+
+Soal 2.3
+2.SELECT * FROM produk WHERE kode NOT LIKE 'M%';
+3.SELECT * FROM `produk` WHERE nama LIKE 'Televisi%';
+4.SELECT * FROM `pelanggan` WHERE nama LIKE '%SA%';
+5.SELECT * FROM `pelanggan` WHERE tmp_lahir NOT LIKE 'Jakarta' AND nama LIKE '%YO%';
+6.SELECT * FROM `pelanggan` WHERE substring(nama,2,1) ='A';
+
+Soal 2.4
+2.SELECT * FROM `produk` ORDER BY harga_beli ASC LIMIT 1;
+3.SELECT * FROM `produk` ORDER BY stok DESC LIMIT 1;
+4.SELECT * FROM `produk` ORDER BY stok ASC LIMIT 2;
+5.SELECT * FROM `pelanggan` ORDER BY tgl_lahir DESC limit 1;
+6.SELECT * FROM `pelanggan` ORDER BY tgl_lahir ASC limit 1;
+
