@@ -1,0 +1,151 @@
+//menampilkan stok paling tinggi
+select * from produk where stok = (select max(stok) from produk);
+select * from produk where stok = (select min(stok) from produk);
+
+//untuk meniadakan duplikasi 
+select distinct stok from produk;
++------+
+| stok |
++------+
+|    5 |
+|    4 |
+|    6 |
+|    7 |
+|    9 |
+|   13 |
++------+
+
+//kondisi case (Membuat kolom baru yaitu Keterangan, didalamnya jika stok lebih dari 5 maka Keterangan CUKUP
+Jika tidak atau kurang dari 5 maka Keterangan Kurang)
+select nama, harga_jual, stok,
+    -> case
+    -> when stok >= 5 then 'CUKUP'
+    -> else 'KURANG'
+    -> end as Keterangan from produk;
++------------------+------------+------+------------+
+| nama             | harga_jual | stok | Keterangan |
++------------------+------------+------+------------+
+| Televisi 21 Inch |    5040000 |    5 | CUKUP      |
+| Televisi 40 Inch |    9600000 |    4 | KURANG     |
+| Kulkas 2 Pintu   |    4600000 |    6 | CUKUP      |
+| Meja Makan       |     600000 |    4 | KURANG     |
+| Teh Kotak        |       3500 |    6 | CUKUP      |
+| Lemari           |    3500000 |    5 | CUKUP      |
+| Motherboard      |    2500000 |    7 | CUKUP      |
+| RAM              |     500000 |    9 | CUKUP      |
+| Coca - Cola      |       5000 |   13 | CUKUP      |
+| Kasur            |    1200000 |    4 | KURANG     |
++------------------+------------+------+------------+
+
+//Case jika jenis_produk_id = 1 maka akan di kumpulkan dan akan di jumlahkan stoknya lalu di tampilkan
+pada kolom baru yaitu jml 
+select case
+    ->when jenis_produk_id = 1 then 'ELEKTRONIK'
+    ->when jenis_produk_id = 2 then 'FURNITURE'
+    ->when jenis_produk_id = 3 then 'MAKANAN'
+    ->when jenis_produk_id = 4 then 'MINUMAN'
+    ->else 'KOMPUTER'
+    ->end as kategori, sum(stok) as jml from produk group by jenis_produk_id;
++------------+------+
+| kategori   | jml  |
++------------+------+
+| ELEKTRONIK |   15 |
+| FURNITURE  |   13 |
+| MINUMAN    |   19 |
+| KOMPUTER   |   16 |
++------------+------+
+
+//group by mengelompokan harga jual yang ada di tiap jenis_produk_id lalu menjumlahkan harga_jual dan menampilkannya
+pada kolom baru yaitu total_harga_jual
+select jenis_produk_id, SUM(harga_jual) as total_harga_jual from produk group by jenis_produk_id;
++-----------------+------------------+
+| jenis_produk_id | total_harga_jual |
++-----------------+------------------+
+|               1 |         19240000 |
+|               2 |          5300000 |
+|               4 |             8500 |
+|               5 |          3000000 |
++-----------------+------------------+
+
+//untuk mengelompokan dan having count berguna untuk memfiltering yang sudah di group by
+select jenis_produk_id, count(jenis_produk_id) as jumlah_produk from produk group by jenis_produk_id having count(jenis_produk_id) > 2;
++-----------------+---------------+
+| jenis_produk_id | jumlah_produk |
++-----------------+---------------+
+|               1 |             3 |
+|               2 |             3 |
++-----------------+---------------+
+
+//untuk menghitung asset
+select sum(harga_beli * stok) as total from produk;
++-----------+
+| total     |
++-----------+
+| 105176500 |
++-----------+
+
+//untuk melihat tahun lahir
+select * from pelanggan where year(tgl_lahir) between 2000 and 2004;
++----+------+---------------------------+------+-----------+------------+-------------------------+----------+
+| id | kode | nama                      | jk   | tmp_lahir | tgl_lahir  | email                   | kartu_id |
++----+------+---------------------------+------+-----------+------------+-------------------------+----------+
+|  1 | C001 | Mochammad Fathan Fadillah | L    | Kuningan  | 2003-08-23 | 20210910062@uniku.ac.id |        1 |
+|  2 | C002 | Dhini Fidya Anggraeni     | P    | Kuningan  | 2003-06-30 | 20210910135.uniku.ac.id |        2 |
+|  4 | C004 | Cibra                     | L    | Jakarta   | 2002-04-02 | cibra@gmail.com         |        4 |
+|  5 | C005 | Andi                      | L    | Bandung   | 2001-09-02 | andi@gmail.com          |        2 |
+|  6 | C006 | Budi                      | L    | Bandung   | 2000-09-29 | budi@gmail.com          |        4 |
+|  7 | C007 | Fadillah                  | P    | Surabaya  | 2003-08-02 | fadillah@gmail.com      |        3 |
+|  8 | C008 | Miku                      | P    | Aceh      | 2004-09-02 | miku@gmail.com          |        2 |
+| 10 | C010 | Shiro                     | L    | Jakarta   | 2002-09-12 | shiro@gmail.com         |        1 |
++----+------+---------------------------+------+-----------+------------+-------------------------+----------+
+select * from pelanggan where year(tgl_lahir) = 2003;
++----+------+---------------------------+------+-----------+------------+-------------------------+----------+
+| id | kode | nama                      | jk   | tmp_lahir | tgl_lahir  | email                   | kartu_id |
++----+------+---------------------------+------+-----------+------------+-------------------------+----------+
+|  1 | C001 | Mochammad Fathan Fadillah | L    | Kuningan  | 2003-08-23 | 20210910062@uniku.ac.id |        1 |
+|  2 | C002 | Dhini Fidya Anggraeni     | P    | Kuningan  | 2003-06-30 | 20210910135.uniku.ac.id |        2 |
+|  7 | C007 | Fadillah                  | P    | Surabaya  | 2003-08-02 | fadillah@gmail.com      |        3 |
++----+------+---------------------------+------+-----------+------------+-------------------------+----------+
+
+//menghitung ada berapa orang yang lahir pada 2003
+MariaDB [dbpos_sib5]> select count(tgl_lahir) from pelanggan where year(tgl_lahir) = 2003;
++------------------+
+| count(tgl_lahir) |
++------------------+
+|                3 |
++------------------+
+
+//menghitung berapa orang yang tempat lahirnya di Kuningan
+select count(jk) from pelanggan where tmp_lahir = 'Kuningan';
++-----------+
+| count(jk) |
++-----------+
+|         3 |
++-----------+
+
+//menghitung berapa orang yang tempat lahirnya di Kuningan dan jenis kelaminnya P
+select count(jk) from pelanggan where tmp_lahir = 'Kuningan' And jk = 'P';
+select count(jk) from pelanggan where tmp_lahir = 'Kuningan' And jk = 'L';
+
+//menghitung stok dari min_stok, jika stok lebih besar dari min_stok maka 'Aman' dan jika stok lebih kecil dari min_stok 
+maka 'segera belanja'
+select id, nama, stok,
+    -> case
+    -> when stok > min_stok then 'Aman'
+    -> else 'Segera Belanja'
+    -> end as informasi from produk;
++----+------------------+------+----------------+
+| id | nama             | stok | informasi      |
++----+------------------+------+----------------+
+|  1 | Televisi 21 Inch |    5 | Aman           |
+|  2 | Televisi 40 Inch |    4 | Aman           |
+|  3 | Kulkas 2 Pintu   |    6 | Aman           |
+|  4 | Meja Makan       |    4 | Aman           |
+|  5 | Teh Kotak        |    6 | Segera Belanja |
+|  6 | Lemari           |    5 | Aman           |
+|  7 | Motherboard      |    7 | Aman           |
+|  8 | RAM              |    9 | Aman           |
+|  9 | Coca - Cola      |   13 | Aman           |
+| 10 | Kasur            |    4 | Aman           |
++----+------------------+------+----------------+
+
