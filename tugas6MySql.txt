@@ -1,5 +1,5 @@
 untuk penjelasan relasinya
-customer one --- many produk (customer bisa memilih beberapa produk dan beberapa produk bisa di pilih customer)
+customer one --- many produk (satu customer bisa memesan beberapa produk dan beberapa produk bisa dipesan customer)
 produk many ---- many pesanan (beberapa produk bisa memuat oleh beberapa pesanan dan beberapa pesanan bisa dimuat oleh beberapa produk)
 karena many to many maka ada table baru yaitu detail_pesanan yang didalamnya ada kode_produk dan id_pesanan
 pesanan many ---- one pembayaran (beberapa pesanan hanya bisa dibayar oleh satu pembayaran dan satu pembayaran bisa membayar beberapa pesanan)
