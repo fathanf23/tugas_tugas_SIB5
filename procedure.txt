@@ -1,0 +1,147 @@
+//membuat procedure tanpa parameter
+MariaDB [db_koperasisib5]> delimiter $$
+MariaDB [db_koperasisib5]> create procedure showProduk()
+    -> begin
+    -> select kode, nama, stok from produk;
+    -> end $$
+Query OK, 0 rows affected (0.024 sec)
+
+MariaDB [db_koperasisib5]> delimiter ;
+MariaDB [db_koperasisib5]> call showProduk;
+
+//membuat procedure dengan parameter
+MariaDB [db_koperasisib5]> delimiter $$
+MariaDB [db_koperasisib5]> create procedure showProdukElektronik(id int)
+    -> begin
+    -> select * from produk where jenis_produk_id = id;
+    -> end $$
+Query OK, 0 rows affected (0.010 sec)
+
+MariaDB [db_koperasisib5]> delimiter ;
+MariaDB [db_koperasisib5]> call showProdukElektronik(1);
+
+//membuat procedure dengan banyak parameter dan dapat menambahkan data 
+MariaDB [db_koperasisib5]> delimiter $$
+MariaDB [db_koperasisib5]> create procedure inputPesanan(
+    -> tanggal date, total double, pelanggan_id int)
+    -> begin
+    -> insert into pesanan (tanggal, total, pelanggan_id) values
+    -> (tanggal, total, pelanggan_id);
+    -> end $$
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [db_koperasisib5]> delimiter ;
+MariaDB [db_koperasisib5]> call inputPesanan('2015-11-04',30000,9);
+Query OK, 1 row affected (0.016 sec)
+
+//untuk melihat procedure procedure yang sudah kita buat
+select routine_name, routine_type, routine_schema
+    -> from information_schema.routines where routine_type = 'procedure'
+    -> and routine_schema = 'db_koperasisib5';
++----------------------+--------------+-----------------+
+| routine_name         | routine_type | routine_schema  |
++----------------------+--------------+-----------------+
+| inputPesanan         | PROCEDURE    | db_koperasisib5 |
+| showProduk           | PROCEDURE    | db_koperasisib5 |
+| showProdukElektronik | PROCEDURE    | db_koperasisib5 |
++----------------------+--------------+-----------------+
+
+
+//procedure
+MariaDB [db_koperasisib5]> delimiter $$
+MariaDB [db_koperasisib5]> create procedure totalHarga(
+    -> in harga double, in jml int, out total double)
+    -> begin
+    -> set total = harga * jml;
+    -> select @total;
+    -> end $$
+Query OK, 0 rows affected (0.010 sec)
+call totalHarga(25000,4,@totalHarga);
++--------+
+| @total |
++--------+
+| NULL   |
++--------+
+1 row in set (0.000 sec)
+
+Query OK, 0 rows affected (0.006 sec)
+
+MariaDB [db_koperasisib5]> select @totalHarga;
++-------------+
+| @totalHarga |
++-------------+
+|      100000 |
++-------------+
+1 row in set (0.000 sec)
+
+
+//procedure 
+create procedure pro_naik(
+    -> in jenis_produk int,
+    -> in persentasi_kenaikan int)
+    -> begin
+    -> update produk set harga_jual = harga_jual + (harga_jual * persentasi_kenaikan /100)
+    -> where jenis_produk_id = jenis_produk;
+    -> end $$
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [db_koperasisib5]> delimiter ;
+MariaDB [db_koperasisib5]> call pro_naik(5, 4);
+Query OK, 4 rows affected (0.006 sec)
+
+MariaDB [db_koperasisib5]> select nama,harga_jual,jenis_produk_id from produk;
++------------------+------------+-----------------+
+| nama             | harga_jual | jenis_produk_id |
++------------------+------------+-----------------+
+| Televisi 21 inch |    5040000 |               1 |
+| Televisi 40 inch |    7440000 |               1 |
+| Kulkas 2 pintu   |    4680000 |               1 |
+| Meja Makan       |     600000 |               2 |
+| Teh Kotak        |       3500 |               4 |
+| PC Desktop HP    |    9984000 |               5 |
+| Teh Botol        |       2500 |               4 |
+| Notebook Acer    |   11232000 |               5 |
+| Notebook Lenovo  |   12480000 |               5 |
+| Laptop HP        |   13520000 |               5 | sebelumnya 13000000
+| Monitor          |    5000000 |               1 |
+| Kursi            |     600000 |               2 |
+| Kwetiaw Goreng   |      15000 |               3 |
++------------------+------------+-----------------+
+13 rows in set (0.000 sec)
+===============================================================================================================
+                                            FUNCTION
+===============================================================================================================
+
+//fungsi untuk menghitung umur
+MariaDB [db_koperasisib5]> delimiter $$
+MariaDB [db_koperasisib5]> create function umur(tgl_lahir date)
+    -> returns int
+    -> begin
+    -> declare umur int;
+    -> set umur = year(curdate()) - year(tgl_lahir);
+    -> return umur;
+    -> end $$
+Query OK, 0 rows affected (0.010 sec)
+MariaDB [db_koperasisib5]> delimiter ;
+
+select kode, nama, jk, umur(tgl_lahir) as umur from pelanggan;
++------+---------------+------+------+
+| kode | nama          | jk   | umur |
++------+---------------+------+------+
+| C001 | Agung Sedayu  | L    |   13 |
+| C002 | Pandan Wangi  | P    |   73 |
+| C003 | Sekar Mirah   | P    |   40 |
+| C004 | Swandaru Geni | L    |   42 |
+| C005 | Pradabashu    | L    |   38 |
+| C006 | Gayatri Dwi   | P    |   36 |
+| C007 | Dewi Gyat     | P    |   35 |
+| C008 | Andre Haru    | L    |   33 |
+| C009 | Ahmad Hasan   | L    |   31 |
+| C010 | Cassanndra    | P    |   33 |
++------+---------------+------+------+
+
+===============================================================================================================
+                                            TRIGGER
+===============================================================================================================
+
+    
