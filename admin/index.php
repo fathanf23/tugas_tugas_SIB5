@@ -1,8 +1,14 @@
 <?php
+include_once 'koneksi.php';
+include_once 'Models/Jenis_produk.php';
+include_once 'Models/Kartu.php';
+include_once 'Models/Produk.php';
+// include_once 'Models/Customer.php';
 include_once 'top.php';
 include_once 'menu.php';
-include_once 'about.php';
-include_once 'contact.php';
+// include_once 'about.php';
+// include_once 'contact.php';
+
 // include 'data.php';
 ?>
 <div>
