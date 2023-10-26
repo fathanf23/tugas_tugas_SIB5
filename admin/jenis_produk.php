@@ -19,7 +19,9 @@ $data_jenisProduk = $model->dataJenis();
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
+                                <a href="index.php?url=jenis_form">
                                 <button class="btn btn-sm btn-primary">Tambah</button>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
@@ -27,12 +29,14 @@ $data_jenisProduk = $model->dataJenis();
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -43,6 +47,13 @@ $data_jenisProduk = $model->dataJenis();
                                         <tr>
                                             <td><?= $no ?></td>
                                             <td><?= $row['nama']?></td>
+                                            <td>
+                                                <form action="jenis_controller.php" method="POST">
+                                                    <a href="index.php?url=Jenis_produk&idedit=<?=$row['id']; ?>" class="btn btn-warning">
+                                                        Ubah
+                                                    </a>
+                                                </form>
+                                            </td>
                                             
                                         </tr>
 
